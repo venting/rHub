@@ -1,0 +1,10 @@
+name: rHub
+version: 0.55
+description: description
+author: regret
+
+main: me.regret.rHub.Main
+
+commands:
+    server:
+        usage: /server
