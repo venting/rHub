@@ -1,18 +1,21 @@
 package me.regret.rHub.listeners;
 
-import me.regret.rPerms.Ranks;
+import me.regret.rperms.main.Ranks;
+import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 public class armorListener implements Listener {
 
-    private final Ranks Ranks;
+    private final me.regret.rperms.main.Ranks Ranks;
     public armorListener(Ranks Ranks) {
         this.Ranks = Ranks;
     }
@@ -21,7 +24,8 @@ public class armorListener implements Listener {
         Player p = e.getPlayer();
 
         //ARMOR
-        if(Ranks.hasRank(p)){
+        if(Bukkit.getServer().getPluginManager().getPlugin("rPerms").getConfig().
+                getString("Players." + p.getUniqueId().toString() + ".rank") != null){
             String rank = Ranks.getRank(p);
             if(rank.equalsIgnoreCase("owner")){
                 ItemStack ownerH = new ItemStack(Material.GLASS);
@@ -110,6 +114,63 @@ public class armorListener implements Listener {
                 p.getInventory().setLeggings(devL);
                 p.getInventory().setBoots(devB);
             }
+        } else {
+            p.getInventory().setHelmet(new ItemStack(Material.GLASS));
+        }
+    }
+
+    @EventHandler
+    public void invClick(InventoryClickEvent e){
+        if(e.getCurrentItem().getType().equals(Material.LEATHER_BOOTS)){
+            e.setCancelled(true);
+        }
+        if(e.getCurrentItem().getType().equals(Material.LEATHER_LEGGINGS)){
+            e.setCancelled(true);
+        }
+        if(e.getCurrentItem().getType().equals(Material.LEATHER_CHESTPLATE)){
+            e.setCancelled(true);
+        }
+        if(e.getCurrentItem().getType().equals(Material.GLASS)){
+            e.setCancelled(true);
+        }
+        if(e.getCurrentItem().getType().equals(Material.BOW)){
+            if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§dTeleport Bow")){
+                e.setCancelled(true);
+            }
+        }
+        if(e.getCurrentItem().getType().equals(Material.COMPASS)){
+            if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§dServer Selector")){
+                e.setCancelled(true);
+            }
+        }
+        if(e.getCurrentItem().getType().equals(Material.ENDER_PEARL)){
+            e.setCancelled(true);
+
+        }
+        if(e.getCurrentItem().getType().equals(Material.ARROW)){
+                e.setCancelled(true);
+
+        }
+    }
+    @EventHandler
+    public void drop(PlayerDropItemEvent e){
+        if(e.getItemDrop().equals(Material.BOW)){
+            if(e.getItemDrop().getItemStack().getItemMeta().getDisplayName().equalsIgnoreCase("§dTeleport Bow")){
+                e.setCancelled(true);
+            }
+        }
+        if(e.getItemDrop().equals(Material.COMPASS)){
+            if(e.getItemDrop().getItemStack().getItemMeta().getDisplayName().equalsIgnoreCase("§dServer Selector")){
+                e.setCancelled(true);
+            }
+        }
+        if(e.getItemDrop().equals(Material.ENDER_PEARL)){
+            if(e.getItemDrop().getItemStack().getItemMeta().getDisplayName().equalsIgnoreCase("§dEnderbutt")){
+                e.setCancelled(true);
+            }
+        }
+        if(e.getItemDrop().equals(Material.ARROW)){
+            e.setCancelled(true);
         }
     }
 }

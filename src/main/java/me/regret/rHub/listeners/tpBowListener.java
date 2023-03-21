@@ -1,6 +1,7 @@
 package me.regret.rHub.listeners;
 
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -13,6 +14,7 @@ public class tpBowListener implements Listener {
     public void bow(ProjectileHitEvent e){
         if(e.getEntity() instanceof Arrow){
             Player p = (Player) e.getEntity().getShooter();
+
             float yaw = p.getLocation().getYaw();
             float pitch = p.getLocation().getPitch();
 

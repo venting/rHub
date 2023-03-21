@@ -21,14 +21,4 @@ public class playerListener implements Listener {
             e.setCancelled(true);
         }
     }
-
-    @EventHandler
-    public void drop(PlayerDropItemEvent e){
-        e.setCancelled(true);
-    }
-
-    @EventHandler
-    public void pickup(PlayerPickupItemEvent e){
-        e.setCancelled(true);
-    }
 }

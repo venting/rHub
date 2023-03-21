@@ -3,13 +3,13 @@ package me.regret.rHub;
 import me.regret.rHub.commands.serverCommand;
 import me.regret.rHub.listeners.*;
 import me.regret.rHub.listeners.connectListener;
-import me.regret.rPerms.Ranks;
 import org.bukkit.plugin.java.JavaPlugin;
 import me.regret.rHub.scoreboard.Scoreboard;
+import me.regret.rperms.main.Ranks;
 
 public class Main extends JavaPlugin {
 
-    private Ranks Ranks;
+    public Ranks Ranks;
 
     @Override
     public void onEnable() {

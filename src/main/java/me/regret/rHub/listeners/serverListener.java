@@ -55,8 +55,10 @@ public class serverListener implements Listener {
             if (p.getInventory().getItemInHand() != null) {
                 if (p.getInventory().getItemInHand().getItemMeta() != null) {
                     if (a.equals(Action.RIGHT_CLICK_AIR) || a.equals(Action.RIGHT_CLICK_BLOCK)) {
-                        if (p.getInventory().getItemInHand().getItemMeta().getDisplayName().equals("§dServer Selector")) {
-                            p.performCommand("server");
+                        if(p.getInventory().getItemInHand().getType().equals(Material.COMPASS)){
+                            if (p.getInventory().getItemInHand().getItemMeta().getDisplayName().equals("§dServer Selector")) {
+                                p.performCommand("server");
+                            }
                         }
                     }
                 }

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="rPerms">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../spigot/test/plugins/rPerms.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../spigot/test/plugins/rPerms.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,7 +1,7 @@
 package me.regret.rHub.scoreboard;
 
 import me.regret.rHub.Main;
-import me.regret.rPerms.Ranks;
+import me.regret.rperms.main.Ranks;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
@@ -17,7 +17,7 @@ import java.util.Map;
 public class Scoreboard implements Listener {
     //public Map<Player, Scoreboard> scores = new HashMap<Player, Scoreboard>();
     private final Main plugin;
-    private final Ranks Ranks;
+    private final me.regret.rperms.main.Ranks Ranks;
     public Scoreboard(Main plugin, Ranks Ranks) {
         this.plugin = plugin;
         this.Ranks = Ranks;
@@ -75,6 +75,16 @@ public class Scoreboard implements Listener {
                     list.add("&7&l&m------------------");
                     Utils.setSlotsFromList(list);
                 }
+            } else {
+                list.add("&7&l&m------------------");
+                list.add("&dPlayers Online&7:");
+                list.add(new StringBuilder().append("&7&l* &r").append(onlineP).toString() + "&7/&f1,000");
+                list.add("");
+                list.add("&dRank&7: No Rank");
+                list.add(" ");
+                list.add("&7&ostore.regret.cc");
+                list.add("&7&l&m------------------");
+                Utils.setSlotsFromList(list);
             }
         }
     }
