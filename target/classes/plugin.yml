@@ -1,0 +1,11 @@
+name: rHub
+version: 0.6
+description: description
+author: regret
+depend:
+    - rPerms
+main: me.regret.rHub.Main
+
+commands:
+    server:
+        usage: /server
