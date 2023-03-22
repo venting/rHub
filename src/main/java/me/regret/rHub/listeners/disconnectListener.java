@@ -11,5 +11,9 @@ public class disconnectListener implements Listener {
     public void onLeave(PlayerQuitEvent e) {
         Player p = e.getPlayer();
         e.setQuitMessage(null);
+        p.getInventory().getHelmet().setType(null);
+        p.getInventory().getChestplate().setType(null);
+        p.getInventory().getChestplate().setType(null);
+        p.getInventory().getChestplate().setType(null);
     }
 }

@@ -1,7 +1,6 @@
 package me.regret.rHub.scoreboard;
 
 import me.regret.rHub.Main;
-import me.regret.rperms.main.Ranks;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
@@ -17,10 +16,8 @@ import java.util.Map;
 public class Scoreboard implements Listener {
     //public Map<Player, Scoreboard> scores = new HashMap<Player, Scoreboard>();
     private final Main plugin;
-    private final me.regret.rperms.main.Ranks Ranks;
-    public Scoreboard(Main plugin, Ranks Ranks) {
+    public Scoreboard(Main plugin) {
         this.plugin = plugin;
-        this.Ranks = Ranks;
     }
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
@@ -50,11 +47,12 @@ public class Scoreboard implements Listener {
             for (final Player online : Bukkit.getServer().getOnlinePlayers()) {
                 onlineP++;
             }
-
+            String rank = Bukkit.getServer().getPluginManager().getPlugin("rPerms").getConfig()
+                    .getString("Players." + player.getUniqueId().toString() + ".rank");
             ConfigurationSection rankNames = Bukkit.getPluginManager().getPlugin("rPerms").getConfig().getConfigurationSection("Ranks");
 
             if (rankNames != null) {
-                if(Ranks.getRank(player) == null){
+                if(Bukkit.getPluginManager().getPlugin("rPerms").getConfig().getString("Players." + player.getUniqueId().toString() + ".rank") == null){
                     list.add("&7&l&m------------------");
                     list.add("&dPlayers Online&7:");
                     list.add(new StringBuilder().append("&7&l* &r").append(onlineP).toString() + "&7/&f1,000");
@@ -69,7 +67,7 @@ public class Scoreboard implements Listener {
                     list.add("&dPlayers Online&7:");
                     list.add(new StringBuilder().append("&7&l* &r").append(onlineP).toString() + "&7/&f1,000");
                     list.add("");
-                    list.add("&dRank&7: " + Ranks.getRank(player));
+                    list.add("&dRank&7: " + rank);
                     list.add(" ");
                     list.add("&7&ostore.regret.cc");
                     list.add("&7&l&m------------------");

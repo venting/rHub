@@ -74,7 +74,7 @@ public class serverListener implements Listener {
             if (e.getInventory().getTitle().contains("Server Selector")) {
                 if (e.getCurrentItem().getItemMeta() != null) {
                     if (e.getCurrentItem().getItemMeta().getDisplayName() != null) {
-                        if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§ePractice")){
+                        if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§dPractice")){
                             p.performCommand("server practice");
                             p.closeInventory();
                             e.setCancelled(true);

@@ -1,6 +1,5 @@
 package me.regret.rHub.listeners;
 
-import me.regret.rperms.main.Ranks;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Material;
@@ -11,14 +10,11 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 public class armorListener implements Listener {
 
-    private final me.regret.rperms.main.Ranks Ranks;
-    public armorListener(Ranks Ranks) {
-        this.Ranks = Ranks;
-    }
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
@@ -26,29 +22,29 @@ public class armorListener implements Listener {
         //ARMOR
         if(Bukkit.getServer().getPluginManager().getPlugin("rPerms").getConfig().
                 getString("Players." + p.getUniqueId().toString() + ".rank") != null){
-            String rank = Ranks.getRank(p);
-            if(rank.equalsIgnoreCase("owner")){
+            String rank = Bukkit.getServer().getPluginManager().getPlugin("rPerms").getConfig()
+                    .getString("Players." + p.getUniqueId().toString() + ".rank");            if(rank.equalsIgnoreCase("owner")){
                 ItemStack ownerH = new ItemStack(Material.GLASS);
-                LeatherArmorMeta meta = (LeatherArmorMeta) ownerH.getItemMeta();
-                meta.setDisplayName("§6f");
+                ItemMeta meta = (ItemMeta) ownerH.getItemMeta();
+                meta.setDisplayName("§6fHelmet");
                 ownerH.setItemMeta(meta);
 
                 ItemStack ownerC = new ItemStack(Material.LEATHER_CHESTPLATE);
-                LeatherArmorMeta metaC = (LeatherArmorMeta) ownerH.getItemMeta();
+                LeatherArmorMeta metaC = (LeatherArmorMeta) ownerC.getItemMeta();
                 metaC.setColor(Color.RED);
-                meta.setDisplayName("§6f");
+                metaC.setDisplayName("§6fChestplate");
                 ownerC.setItemMeta(metaC);
 
                 ItemStack ownerL = new ItemStack(Material.LEATHER_LEGGINGS);
-                LeatherArmorMeta metaL = (LeatherArmorMeta) ownerH.getItemMeta();
+                LeatherArmorMeta metaL = (LeatherArmorMeta) ownerL.getItemMeta();
                 metaL.setColor(Color.RED);
-                meta.setDisplayName("§6f");
+                metaL.setDisplayName("§6fLeggings");
                 ownerL.setItemMeta(metaL);
 
                 ItemStack ownerB = new ItemStack(Material.LEATHER_BOOTS);
-                LeatherArmorMeta metaB = (LeatherArmorMeta) ownerH.getItemMeta();
+                LeatherArmorMeta metaB = (LeatherArmorMeta) ownerB.getItemMeta();
                 metaB.setColor(Color.RED);
-                meta.setDisplayName("§6f");
+                metaB.setDisplayName("§6fBoots");
                 ownerB.setItemMeta(metaB);
 
                 p.getInventory().setHelmet(ownerH);
@@ -63,21 +59,21 @@ public class armorListener implements Listener {
                 adminH.setItemMeta(meta);
 
                 ItemStack adminC = new ItemStack(Material.LEATHER_CHESTPLATE);
-                LeatherArmorMeta metaC = (LeatherArmorMeta) adminH.getItemMeta();
+                LeatherArmorMeta metaC = (LeatherArmorMeta) adminC.getItemMeta();
                 metaC.setColor(Color.ORANGE);
-                meta.setDisplayName("§6f");
+                metaC.setDisplayName("§6f");
                 adminC.setItemMeta(metaC);
 
                 ItemStack adminL = new ItemStack(Material.LEATHER_LEGGINGS);
-                LeatherArmorMeta metaL = (LeatherArmorMeta) adminH.getItemMeta();
+                LeatherArmorMeta metaL = (LeatherArmorMeta) adminL.getItemMeta();
                 metaL.setColor(Color.ORANGE);
-                meta.setDisplayName("§6f");
+                metaL.setDisplayName("§6f");
                 adminL.setItemMeta(metaL);
 
                 ItemStack adminB = new ItemStack(Material.LEATHER_BOOTS);
-                LeatherArmorMeta metaB = (LeatherArmorMeta) adminH.getItemMeta();
+                LeatherArmorMeta metaB = (LeatherArmorMeta) adminB.getItemMeta();
                 metaB.setColor(Color.ORANGE);
-                meta.setDisplayName("§6f");
+                metaB.setDisplayName("§6f");
                 adminB.setItemMeta(metaB);
 
                 p.getInventory().setHelmet(adminH);
@@ -92,21 +88,21 @@ public class armorListener implements Listener {
                 devH.setItemMeta(meta);
 
                 ItemStack devC = new ItemStack(Material.LEATHER_CHESTPLATE);
-                LeatherArmorMeta metaC = (LeatherArmorMeta) devH.getItemMeta();
+                LeatherArmorMeta metaC = (LeatherArmorMeta) devC.getItemMeta();
                 metaC.setColor(Color.BLUE);
-                meta.setDisplayName("§6f");
+                metaC.setDisplayName("§6f");
                 devC.setItemMeta(metaC);
 
                 ItemStack devL = new ItemStack(Material.LEATHER_LEGGINGS);
-                LeatherArmorMeta metaL = (LeatherArmorMeta) devH.getItemMeta();
+                LeatherArmorMeta metaL = (LeatherArmorMeta) devL.getItemMeta();
                 metaL.setColor(Color.BLUE);
-                meta.setDisplayName("§6f");
+                metaL.setDisplayName("§6f");
                 devL.setItemMeta(metaL);
 
                 ItemStack devB = new ItemStack(Material.LEATHER_BOOTS);
-                LeatherArmorMeta metaB = (LeatherArmorMeta) devH.getItemMeta();
+                LeatherArmorMeta metaB = (LeatherArmorMeta) devB.getItemMeta();
                 metaB.setColor(Color.BLUE);
-                meta.setDisplayName("§6f");
+                metaB.setDisplayName("§6f");
                 devB.setItemMeta(metaB);
 
                 p.getInventory().setHelmet(devH);
