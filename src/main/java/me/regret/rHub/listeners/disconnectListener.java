@@ -9,11 +9,11 @@ public class disconnectListener implements Listener {
 
     @EventHandler
     public void onLeave(PlayerQuitEvent e) {
-        Player p = e.getPlayer();
+        Player player = e.getPlayer();
         e.setQuitMessage(null);
-        p.getInventory().getHelmet().setType(null);
-        p.getInventory().getChestplate().setType(null);
-        p.getInventory().getChestplate().setType(null);
-        p.getInventory().getChestplate().setType(null);
+        player.getInventory().setHelmet(null);
+        player.getInventory().setChestplate(null);
+        player.getInventory().setLeggings(null);
+        player.getInventory().setBoots(null);
     }
 }
